@@ -5,8 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
-import com.example.testapp.navigation.StartNavigation
 import com.example.testapp.navigation.Screens
+import com.example.testapp.navigation.StartNavigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,6 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val navigationController = rememberNavController()
+
             StartNavigation(
                 navigationController = navigationController,
                 startDestination = Screens.Splash.screen)

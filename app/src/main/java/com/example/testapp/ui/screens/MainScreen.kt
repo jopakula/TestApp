@@ -1,86 +1,52 @@
 package com.example.testapp.ui.screens
 
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.testapp.navigation.BottomNavigation
 import com.example.testapp.navigation.Screens
+import com.example.testapp.ui.ChangeNavigationBarColor
+import com.example.testapp.uikit.bottomBar.MyBottomBar
+import com.example.testapp.uikit.common.MyBlackColor
 
 @Composable
 fun MainScreen() {
     val navigationController = rememberNavController()
-    val selected = remember {
-        mutableStateOf(Icons.Default.DateRange)
-    }
+    val selectedTab = remember { mutableIntStateOf(0) }
+
+    ChangeNavigationBarColor(color = MyBlackColor)
+
     Scaffold(
+        modifier = Modifier
+            .navigationBarsPadding(),
         bottomBar = {
-            BottomAppBar(
-                containerColor = Color.LightGray
-            ) {
-                IconButton(
-                    onClick = {
-                        selected.value = Icons.Default.DateRange
-                        navigationController.navigate(Screens.Screen1.screen) {
-                            popUpTo(0)
+
+            MyBottomBar(
+                selectedTab = selectedTab.intValue,
+                onTabSelected = { index ->
+                    selectedTab.intValue = index
+                    when (index) {
+                        0 -> navigationController.navigate(Screens.Screen1.screen) {
+                            popUpTo(Screens.Screen1.screen) { inclusive = true }
                         }
-                    },
-                    modifier = Modifier.weight(1F)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.DateRange, contentDescription = null,
-                        modifier = Modifier.size(30.dp),
-                        tint = if (selected.value == Icons.Default.DateRange) Color.Black else Color.DarkGray
-                    )
-
-                }
-
-                IconButton(
-                    onClick = {
-                        selected.value = Icons.Default.Person
-                        navigationController.navigate(Screens.Screen2.screen) {
-                            popUpTo(0)
+                        1 -> navigationController.navigate(Screens.Screen2.screen) {
+                            popUpTo(Screens.Screen2.screen) { inclusive = true }
                         }
-                    },
-                    modifier = Modifier.weight(1F)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Person, contentDescription = null,
-                        modifier = Modifier.size(30.dp),
-                        tint = if (selected.value == Icons.Default.Person) Color.Black else Color.DarkGray
-                    )
-
-                }
-
-                IconButton(
-                    onClick = {
-                        selected.value = Icons.Default.Menu
-                        navigationController.navigate(Screens.Screen3.screen) {
-                            popUpTo(0)
+                        2 -> navigationController.navigate(Screens.Screen3.screen) {
+                            popUpTo(Screens.Screen3.screen) { inclusive = true }
                         }
-                    },
-                    modifier = Modifier.weight(1F)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Menu, contentDescription = null,
-                        modifier = Modifier.size(30.dp),
-                        tint = if (selected.value == Icons.Default.Menu) Color.Black else Color.DarkGray
-                    )
+                        3 -> navigationController.navigate(Screens.Screen4.screen) {
+                            popUpTo(Screens.Screen4.screen) { inclusive = true }
+                        }
+                    }
                 }
-            }
+            )
         }
     ) { paddingValues ->
         BottomNavigation(
@@ -91,3 +57,10 @@ fun MainScreen() {
         )
     }
 }
+
+@Composable
+@Preview
+private fun MainScreenPreview(){
+    MainScreen()
+}
+

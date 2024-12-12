@@ -9,4 +9,5 @@ sealed class Screens(
     data object Screen1: Screens("screen1")
     data object Screen2: Screens("screen2")
     data object Screen3: Screens("screen3")
+    data object Screen4: Screens("screen4")
 }

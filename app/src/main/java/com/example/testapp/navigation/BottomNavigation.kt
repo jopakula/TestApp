@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import com.example.testapp.ui.screens.Screen1
 import com.example.testapp.ui.screens.Screen2
 import com.example.testapp.ui.screens.Screen3
+import com.example.testapp.ui.screens.Screen4
 
 @Composable
 fun BottomNavigation(
@@ -24,6 +25,7 @@ fun BottomNavigation(
         composable(Screens.Screen1.screen) { Screen1() }
         composable(Screens.Screen2.screen) { Screen2() }
         composable(Screens.Screen3.screen) { Screen3() }
+        composable(Screens.Screen4.screen) { Screen4() }
     }
 
 }
