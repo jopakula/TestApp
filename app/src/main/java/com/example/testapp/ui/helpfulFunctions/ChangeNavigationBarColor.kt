@@ -1,4 +1,4 @@
-package com.example.testapp.ui
+package com.example.testapp.ui.helpfulFunctions
 
 import android.app.Activity
 import android.content.Context

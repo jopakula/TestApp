@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
 
             StartNavigation(
                 navigationController = navigationController,
-                startDestination = Screens.Splash.screen)
+                startDestination = Screens.Onboarding1.screen)
         }
     }
 }

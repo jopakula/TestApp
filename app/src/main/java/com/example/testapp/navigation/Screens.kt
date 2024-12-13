@@ -5,7 +5,8 @@ sealed class Screens(
 ) {
     data object Main: Screens("main")
     data object Splash: Screens("splash")
-    data object Onboarding: Screens("onboarding")
+    data object Onboarding1: Screens("onboarding1")
+    data object Onboarding2: Screens("onboarding2")
     data object Screen1: Screens("screen1")
     data object Screen2: Screens("screen2")
     data object Screen3: Screens("screen3")

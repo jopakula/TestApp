@@ -13,7 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.testapp.R
-import com.example.testapp.uikit.common.MyBlackColor
+import com.example.testapp.uikit.common.BlackColor
 
 @Composable
 fun MyBottomBar(
@@ -25,7 +25,7 @@ fun MyBottomBar(
             .fillMaxWidth()
             .height(70.dp)
             .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
-            .background(MyBlackColor)
+            .background(BlackColor)
         ,
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.Top

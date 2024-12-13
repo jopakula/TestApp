@@ -1,4 +1,4 @@
-package com.example.testapp.ui.screens
+package com.example.testapp.ui.screens.start
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,7 +18,7 @@ import kotlinx.coroutines.delay
 fun SplashScreen(navigationController: NavHostController) {
     LaunchedEffect(Unit) {
         delay(2000)
-        navigationController.navigate(Screens.Onboarding.screen) {
+        navigationController.navigate(Screens.Onboarding1.screen) {
             popUpTo(0) { inclusive = true }
         }
     }

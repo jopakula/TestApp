@@ -1,4 +1,4 @@
-package com.example.testapp.ui.screens
+package com.example.testapp.ui.screens.start
 
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -11,16 +11,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.testapp.navigation.BottomNavigation
 import com.example.testapp.navigation.Screens
-import com.example.testapp.ui.ChangeNavigationBarColor
+import com.example.testapp.ui.helpfulFunctions.ChangeNavigationBarColor
 import com.example.testapp.uikit.bottomBar.MyBottomBar
-import com.example.testapp.uikit.common.MyBlackColor
+import com.example.testapp.uikit.common.BlackColor
 
 @Composable
 fun MainScreen() {
     val navigationController = rememberNavController()
     val selectedTab = remember { mutableIntStateOf(0) }
 
-    ChangeNavigationBarColor(color = MyBlackColor)
+    ChangeNavigationBarColor(color = BlackColor)
 
     Scaffold(
         modifier = Modifier

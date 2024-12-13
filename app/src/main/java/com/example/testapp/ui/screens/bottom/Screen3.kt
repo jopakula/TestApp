@@ -1,4 +1,4 @@
-package com.example.testapp.ui.screens
+package com.example.testapp.ui.screens.bottom
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,7 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun Screen2(){
+fun Screen3(){
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -17,7 +17,7 @@ fun Screen2(){
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            text = "Screen2"
+            text = "Screen3"
         )
     }
 }

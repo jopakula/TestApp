@@ -5,10 +5,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.testapp.ui.screens.Screen1
-import com.example.testapp.ui.screens.Screen2
-import com.example.testapp.ui.screens.Screen3
-import com.example.testapp.ui.screens.Screen4
+import com.example.testapp.ui.screens.bottom.Screen1
+import com.example.testapp.ui.screens.bottom.Screen2
+import com.example.testapp.ui.screens.bottom.Screen3
+import com.example.testapp.ui.screens.bottom.Screen4
 
 @Composable
 fun BottomNavigation(
