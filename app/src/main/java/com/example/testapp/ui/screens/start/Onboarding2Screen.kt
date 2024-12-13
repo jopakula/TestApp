@@ -71,7 +71,7 @@ fun Onboarding2Screen(
             Button(
                 modifier = Modifier
                     .fillMaxWidth(),
-                onClick = { navigationController.navigate(Screens.Main.screen) },
+                onClick = { navigationController.navigate(Screens.Home.screen) },
                 colors = ButtonColors(
                     containerColor = GreenColor,
                     contentColor = WhiteColor,

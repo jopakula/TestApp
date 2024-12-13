@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.testapp.R
+import com.example.testapp.uikit.cards.MyCard
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GrayColor
 import com.example.testapp.uikit.common.WhiteColor
@@ -98,7 +99,15 @@ fun MainScreen(){
             fontWeight = FontWeight.Bold,
             color = GrayColor
         )
-        LazyColumn {  }
+        LazyColumn(
+            modifier = Modifier
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(5) {
+                MyCard()
+            }
+        }
     }
 }
 

@@ -1,0 +1,93 @@
+package com.example.testapp.uikit.cards
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.testapp.R
+import com.example.testapp.uikit.common.BlackColor
+import com.example.testapp.uikit.common.GrayColor
+import com.example.testapp.uikit.common.WhiteColor
+
+@Composable
+fun MyCard(
+    onClick: () -> Unit = {}
+) {
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(130.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            modifier = Modifier
+                .fillMaxWidth(),
+            painter = painterResource(R.drawable.card_bg1),
+            contentDescription = null,
+            contentScale = ContentScale.Crop
+        )
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(BlackColor.copy(alpha = 0.38F))
+        )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = Color.Transparent, shape = RoundedCornerShape(16.dp)),
+        ) {
+            Text(
+                modifier = Modifier
+                    .padding(start = 16.dp, top = 32.dp, end = 16.dp, bottom = 8.dp),
+                text = "NAME LESSON",
+                color = WhiteColor,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 18.sp,
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+//                    .blur(5.dp)
+                    .background(Color.Black.copy(alpha = 0.51f))
+            ){
+                Text(
+                    modifier = Modifier
+                        .padding(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 8.dp),
+                    text = "Lorem ipsum dolor sit amet consectetur. Mi scelerisque nec mauris elementum egestas convallis. Odio lectus consectetur ultrices libero dolor adipiscing semper nec justo. Integer nunc et arcu cum luctus neque consequat consequat.",
+                    color = GrayColor,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 12.sp,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+        }
+    }
+}
+
+@Composable
+@Preview
+private fun MyCardPreview() {
+    MyCard()
+}
