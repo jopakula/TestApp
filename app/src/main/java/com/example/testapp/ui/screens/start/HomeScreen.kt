@@ -16,7 +16,7 @@ import com.example.testapp.uikit.bottomBar.MyBottomBar
 import com.example.testapp.uikit.common.BlackColor
 
 @Composable
-fun MainScreen() {
+fun HomeScreen() {
     val navigationController = rememberNavController()
     val selectedTab = remember { mutableIntStateOf(0) }
 
@@ -32,8 +32,8 @@ fun MainScreen() {
                 onTabSelected = { index ->
                     selectedTab.intValue = index
                     when (index) {
-                        0 -> navigationController.navigate(Screens.Screen1.screen) {
-                            popUpTo(Screens.Screen1.screen) { inclusive = true }
+                        0 -> navigationController.navigate(Screens.Main.screen) {
+                            popUpTo(Screens.Main.screen) { inclusive = true }
                         }
                         1 -> navigationController.navigate(Screens.Screen2.screen) {
                             popUpTo(Screens.Screen2.screen) { inclusive = true }
@@ -51,7 +51,7 @@ fun MainScreen() {
     ) { paddingValues ->
         BottomNavigation(
             navigationController = navigationController,
-            startDestination = Screens.Screen1.screen,
+            startDestination = Screens.Main.screen,
             modifier = Modifier
                 .padding(paddingValues)
         )
@@ -61,6 +61,6 @@ fun MainScreen() {
 @Composable
 @Preview
 private fun MainScreenPreview(){
-    MainScreen()
+    HomeScreen()
 }
 
