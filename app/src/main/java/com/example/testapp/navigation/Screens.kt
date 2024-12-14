@@ -10,5 +10,5 @@ sealed class Screens(
     data object Main: Screens("main")
     data object Screen2: Screens("screen2")
     data object Screen3: Screens("screen3")
-    data object Screen4: Screens("screen4")
+    data object Settings: Screens("settings")
 }
