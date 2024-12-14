@@ -6,9 +6,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,7 +24,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.testapp.R
 import com.example.testapp.navigation.Screens
 import com.example.testapp.ui.helpfulFunctions.PageIndicator
-import com.example.testapp.uikit.common.GreenColor
+import com.example.testapp.uikit.button.MyButton
 import com.example.testapp.uikit.common.WhiteColor
 
 @Composable
@@ -35,7 +34,8 @@ fun Onboarding1Screen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = WhiteColor),
+            .background(color = WhiteColor)
+            .navigationBarsPadding(),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -68,19 +68,10 @@ fun Onboarding1Screen(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth(),
+            MyButton(
                 onClick = { navigationController.navigate(Screens.Onboarding2.screen) },
-                colors = ButtonColors(
-                    containerColor = GreenColor,
-                    contentColor = WhiteColor,
-                    disabledContainerColor = GreenColor,
-                    disabledContentColor = WhiteColor
-                    )
-            ) {
-                Text("Next")
-            }
+                buttonText = "Next"
+            )
             PageIndicator(
                 currentPage = 0,
                 totalPages = 2,
