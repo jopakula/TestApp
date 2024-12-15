@@ -3,6 +3,7 @@ package com.example.testapp.ui.screens.bottom
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,9 +13,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
@@ -25,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.testapp.R
+import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
 import com.example.testapp.uikit.button.MyButton
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.WhiteColor
@@ -34,13 +38,15 @@ fun DetailsScreen(
     cardId: Int? = null,
     onIconBackClick: () -> Unit = {},
 ) {
-
+    val interactionSource = remember { MutableInteractionSource() }
     val cardText =
         "Lorem ipsum dolor sit amet consectetur. Turpis purus eu fermentum imperdiet massa semper. Cras eu rutrum amet mauris ac maecenas orci ut sem. Ut odio facilisis id feugiat. Diam et purus nulla interdum tortor laoreet ac neque neque. Pharetra mauris mattis in venenatis. Orci facilisi duis mi ultrices amet eget nulla."
     if (cardId == null) {
         Text("Invalid card ID")
         return
     }
+
+    ChangeStatusBarColor(color = BlackColor, isIconsLight = true)
 
     Column(
         modifier = Modifier
@@ -91,7 +97,11 @@ fun DetailsScreen(
                                 .padding(start = 8.dp, top = 26.dp)
                                 .rotate(180f)
                                 .size(18.dp)
-                                .clickable (onClick = onIconBackClick),
+                                .clickable (
+                                    onClick = onIconBackClick,
+                                    interactionSource = interactionSource,
+                                    indication = rememberRipple(),
+                                    ),
                             painter = painterResource(R.drawable.arrow),
                             contentDescription = null,
                             tint = WhiteColor

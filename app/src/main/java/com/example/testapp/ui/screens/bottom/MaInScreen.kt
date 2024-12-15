@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -25,6 +26,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.testapp.R
 import com.example.testapp.navigation.Screens
+import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
 import com.example.testapp.uikit.cards.MyCard
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GrayColor
@@ -33,7 +35,8 @@ import com.example.testapp.uikit.common.WhiteColor
 @Composable
 fun MainScreen(
     navigationController: NavHostController
-){
+) {
+    ChangeStatusBarColor(color = WhiteColor, isIconsLight = false)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -50,29 +53,35 @@ fun MainScreen(
             color = BlackColor
         )
         HorizontalDivider()
-        Text(
-            modifier = Modifier
-                .padding(16.dp),
-            text = "Started lessons",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-            color = GrayColor
-        )
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Center,
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-
         ) {
-            item{
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        modifier = Modifier
+                            .padding(vertical = 16.dp),
+                        text = "Started lessons",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = GrayColor
+                    )
+                }
+            }
+            item {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(280.dp),
                     contentAlignment = Alignment.Center,
-                ){
+                ) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(10.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
@@ -95,20 +104,21 @@ fun MainScreen(
                     }
                 }
             }
-        }
-        Text(
-            modifier = Modifier
-                .padding(16.dp),
-            text = "All lesson",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-            color = GrayColor
-        )
-        LazyColumn(
-            modifier = Modifier
-                .padding(horizontal = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        modifier = Modifier
+                            .padding(vertical = 16.dp),
+                        text = "All lesson",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = GrayColor
+                    )
+                }
+            }
             items(5) { card ->
                 MyCard(
                     onClick = { navigationController.navigate(Screens.Detail.createRoute(cardId = card)) }
@@ -120,6 +130,6 @@ fun MainScreen(
 
 @Composable
 @Preview
-private fun MainScreenPreview(){
+private fun MainScreenPreview() {
     MainScreen(navigationController = rememberNavController())
 }

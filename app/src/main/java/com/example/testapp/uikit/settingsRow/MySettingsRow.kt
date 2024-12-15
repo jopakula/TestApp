@@ -38,13 +38,13 @@ fun MySettingsRow(
         modifier = Modifier
             .fillMaxWidth()
             .height(62.dp)
-            .padding(8.dp)
             .clip(RoundedCornerShape(16.dp))
             .clickable(
                 onClick = onClick,
                 interactionSource = interactionSource,
                 indication = rememberRipple(),
-            ),
+            )
+            .padding(8.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {

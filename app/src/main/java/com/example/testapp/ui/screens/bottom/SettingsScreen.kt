@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.testapp.R
+import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GreenColor
 import com.example.testapp.uikit.common.RedColor
@@ -24,6 +25,7 @@ import com.example.testapp.uikit.settingsRow.MySettingsRow
 
 @Composable
 fun SettingsScreen() {
+    ChangeStatusBarColor(color = WhiteColor, isIconsLight = false)
     Column(
         modifier = Modifier
             .fillMaxSize()
