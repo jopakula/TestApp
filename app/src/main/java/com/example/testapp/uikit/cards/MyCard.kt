@@ -30,7 +30,7 @@ import com.example.testapp.uikit.common.WhiteColor
 
 @Composable
 fun MyCard(
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
 ) {
 
     Box(
@@ -69,7 +69,6 @@ fun MyCard(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-//                    .blur(5.dp)
                     .background(Color.Black.copy(alpha = 0.51f))
             ){
                 Text(

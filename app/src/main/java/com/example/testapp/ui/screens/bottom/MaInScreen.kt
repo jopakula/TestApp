@@ -21,14 +21,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.testapp.R
+import com.example.testapp.navigation.Screens
 import com.example.testapp.uikit.cards.MyCard
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GrayColor
 import com.example.testapp.uikit.common.WhiteColor
 
 @Composable
-fun MainScreen(){
+fun MainScreen(
+    navigationController: NavHostController
+){
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -104,8 +109,10 @@ fun MainScreen(){
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(5) {
-                MyCard()
+            items(5) { card ->
+                MyCard(
+                    onClick = { navigationController.navigate(Screens.Detail.createRoute(cardId = card)) }
+                )
             }
         }
     }
@@ -114,5 +121,5 @@ fun MainScreen(){
 @Composable
 @Preview
 private fun MainScreenPreview(){
-    MainScreen()
+    MainScreen(navigationController = rememberNavController())
 }

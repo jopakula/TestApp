@@ -11,4 +11,7 @@ sealed class Screens(
     data object Screen2: Screens("screen2")
     data object Screen3: Screens("screen3")
     data object Settings: Screens("settings")
+    data object Detail: Screens("detail/{cardId}"){
+        fun createRoute(cardId: Int) = "detail/$cardId"
+    }
 }
