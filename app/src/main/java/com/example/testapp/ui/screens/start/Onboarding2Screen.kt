@@ -69,7 +69,11 @@ fun Onboarding2Screen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             MyButton(
-                onClick = { navigationController.navigate(Screens.Home.screen) },
+                onClick = {
+                    navigationController.navigate(Screens.Home.screen) {
+                        popUpTo(0) { inclusive = true }
+                    }
+                },
                 buttonText = "Next"
             )
             PageIndicator(

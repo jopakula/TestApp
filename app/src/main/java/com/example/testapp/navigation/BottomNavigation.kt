@@ -16,7 +16,7 @@ fun BottomNavigation(
     navigationController: NavHostController,
     startDestination: String,
     modifier: Modifier = Modifier,
-){
+) {
 
     NavHost(
         navController = navigationController,
@@ -26,7 +26,9 @@ fun BottomNavigation(
         composable(Screens.Main.screen) { MainScreen(navigationController = navigationController) }
         composable(Screens.Detail.screen) { backStackEntry ->
             val cardId = backStackEntry.arguments?.getString("cardId")?.toIntOrNull()
-            DetailsScreen(cardId = cardId)
+            DetailsScreen(
+                cardId = cardId,
+                onIconBackClick = { navigationController.popBackStack() })
         }
 
         composable(Screens.Screen2.screen) { Screen2() }

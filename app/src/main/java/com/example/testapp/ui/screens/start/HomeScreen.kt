@@ -33,16 +33,16 @@ fun HomeScreen() {
                     selectedTab.intValue = index
                     when (index) {
                         0 -> navigationController.navigate(Screens.Main.screen) {
-                            popUpTo(Screens.Main.screen) { inclusive = true }
+                            popUpTo(0) { inclusive = true }
                         }
                         1 -> navigationController.navigate(Screens.Screen2.screen) {
-                            popUpTo(Screens.Screen2.screen) { inclusive = true }
+                            popUpTo(0) { inclusive = true }
                         }
                         2 -> navigationController.navigate(Screens.Screen3.screen) {
-                            popUpTo(Screens.Screen3.screen) { inclusive = true }
+                            popUpTo(0) { inclusive = true }
                         }
                         3 -> navigationController.navigate(Screens.Settings.screen) {
-                            popUpTo(Screens.Settings.screen) { inclusive = true }
+                            popUpTo(0) { inclusive = true }
                         }
                     }
                 }
