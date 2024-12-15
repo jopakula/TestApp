@@ -38,7 +38,7 @@ fun HomeScreen() {
                         1 -> navigationController.navigate(Screens.Screen2.screen) {
                             popUpTo(0) { inclusive = true }
                         }
-                        2 -> navigationController.navigate(Screens.Screen3.screen) {
+                        2 -> navigationController.navigate(Screens.Training.screen) {
                             popUpTo(0) { inclusive = true }
                         }
                         3 -> navigationController.navigate(Screens.Settings.screen) {

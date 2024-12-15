@@ -9,7 +9,7 @@ sealed class Screens(
     data object Home: Screens("home")
     data object Main: Screens("main")
     data object Screen2: Screens("screen2")
-    data object Screen3: Screens("screen3")
+    data object Training: Screens("training")
     data object Settings: Screens("settings")
     data object Detail: Screens("detail/{cardId}"){
         fun createRoute(cardId: Int) = "detail/$cardId"
