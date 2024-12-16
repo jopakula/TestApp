@@ -7,8 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.example.testapp.data.DataStoreManager
 import com.example.testapp.navigation.BottomNavigation
 import com.example.testapp.navigation.Screens
 import com.example.testapp.ui.helpfulFunctions.ChangeNavigationBarColor
@@ -16,7 +16,7 @@ import com.example.testapp.uikit.bottomBar.MyBottomBar
 import com.example.testapp.uikit.common.BlackColor
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(dataStoreManager: DataStoreManager) {
     val navigationController = rememberNavController()
     val selectedTab = remember { mutableIntStateOf(0) }
 
@@ -53,14 +53,15 @@ fun HomeScreen() {
             navigationController = navigationController,
             startDestination = Screens.Main.screen,
             modifier = Modifier
-                .padding(paddingValues)
+                .padding(paddingValues),
+            dataStoreManager = dataStoreManager
         )
     }
 }
-
-@Composable
-@Preview
-private fun MainScreenPreview(){
-    HomeScreen()
-}
+//
+//@Composable
+//@Preview
+//private fun MainScreenPreview(){
+//    HomeScreen()
+//}
 

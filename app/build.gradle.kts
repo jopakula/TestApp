@@ -41,6 +41,9 @@ android {
 
 dependencies {
 
+    // dara store
+    implementation (libs.androidx.datastore.preferences)
+
     // navigation
     implementation(libs.androidx.navigation.compose)
 

@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.testapp.data.DataStoreManager
 import com.example.testapp.ui.screens.bottom.DetailsScreen
 import com.example.testapp.ui.screens.bottom.MainScreen
 import com.example.testapp.ui.screens.bottom.Screen2
@@ -16,6 +17,7 @@ fun BottomNavigation(
     navigationController: NavHostController,
     startDestination: String,
     modifier: Modifier = Modifier,
+    dataStoreManager: DataStoreManager,
 ) {
 
     NavHost(
@@ -23,7 +25,9 @@ fun BottomNavigation(
         startDestination = startDestination,
         modifier = modifier
     ) {
-        composable(Screens.Main.screen) { MainScreen(navigationController = navigationController) }
+        composable(Screens.Main.screen) { MainScreen(
+            navigationController = navigationController,
+            dataStoreManager = dataStoreManager) }
         composable(Screens.Detail.screen) { backStackEntry ->
             val cardId = backStackEntry.arguments?.getString("cardId")?.toIntOrNull()
             DetailsScreen(
@@ -37,5 +41,3 @@ fun BottomNavigation(
     }
 
 }
-
-// добавить анимацию !!!

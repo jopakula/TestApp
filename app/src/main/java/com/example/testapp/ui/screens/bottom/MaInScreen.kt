@@ -16,8 +16,12 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -27,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.testapp.R
+import com.example.testapp.data.DataStoreManager
 import com.example.testapp.data.lessonCards
 import com.example.testapp.navigation.Screens
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
@@ -34,11 +39,25 @@ import com.example.testapp.uikit.cards.MyCard
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GrayColor
 import com.example.testapp.uikit.common.WhiteColor
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @Composable
 fun MainScreen(
-    navigationController: NavHostController
+    navigationController: NavHostController,
+    dataStoreManager: DataStoreManager ,
 ) {
+
+    val selectedLessonIds = remember { mutableStateListOf<Int>() }
+
+    LaunchedEffect(Unit) {
+        dataStoreManager.getSelectedLessonsFlow().collect { storedIds ->
+            selectedLessonIds.clear()
+            selectedLessonIds.addAll(storedIds)
+        }
+    }
+
     ChangeStatusBarColor(color = WhiteColor, isIconsLight = false)
     Column(
         modifier = Modifier
@@ -79,33 +98,44 @@ fun MainScreen(
                     )
                 }
             }
-            item {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(280.dp),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(10.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
+            if (selectedLessonIds.isEmpty()) {
+                item {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(280.dp),
+                        contentAlignment = Alignment.Center,
                     ) {
-                        Icon(
-                            painter = painterResource(R.drawable.shopping_card),
-                            contentDescription = null
-                        )
-                        Text(
-                            text = "No lessons started",
-                            textAlign = TextAlign.Center,
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Text(
-                            text = "YWe recommend taking 2 lessons per month. \n" + "Choose any you would like to study",
-                            textAlign = TextAlign.Center,
-                            fontSize = 14.sp
-                        )
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(10.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.shopping_card),
+                                contentDescription = null
+                            )
+                            Text(
+                                text = "No lessons started",
+                                textAlign = TextAlign.Center,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                text = "YWe recommend taking 2 lessons per month. \n Choose any you would like to study",
+                                textAlign = TextAlign.Center,
+                                fontSize = 14.sp
+                            )
+                        }
                     }
+                }
+            } else {
+                items(lessonCards.filter { selectedLessonIds.contains(it.id) }) { card ->
+                    MyCard(
+                        card = card,
+                        onClick = {
+                            navigationController.navigate(Screens.Detail.createRoute(cardId = card.id))
+                        }
+                    )
                 }
             }
             item {
@@ -123,11 +153,15 @@ fun MainScreen(
                     )
                 }
             }
-
             items(lessonCards) { card ->
                 MyCard(
                     card = card,
-                    onClick = { navigationController.navigate(Screens.Detail.createRoute(cardId = card.id)) }
+                    onClick = {
+                        navigationController.navigate(Screens.Detail.createRoute(cardId = card.id))
+                        CoroutineScope(Dispatchers.IO).launch {
+                            dataStoreManager.saveLessonId(id = card.id)
+                        }
+                    }
                 )
             }
 
@@ -138,5 +172,10 @@ fun MainScreen(
 @Composable
 @Preview
 private fun MainScreenPreview() {
-    MainScreen(navigationController = rememberNavController())
+    val context = LocalContext.current
+    val dataStoreManager = DataStoreManager(context)
+    MainScreen(
+        navigationController = rememberNavController(),
+        dataStoreManager = dataStoreManager
+    )
 }
