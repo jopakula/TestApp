@@ -37,7 +37,7 @@ fun BottomNavigation(
 
         composable(Screens.Screen2.screen) { Screen2() }
         composable(Screens.Training.screen) { TrainingScreen() }
-        composable(Screens.Settings.screen) { SettingsScreen() }
+        composable(Screens.Settings.screen) { SettingsScreen(dataStoreManager =  dataStoreManager) }
     }
 
 }

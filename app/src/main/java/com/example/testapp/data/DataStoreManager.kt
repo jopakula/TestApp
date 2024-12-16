@@ -26,4 +26,10 @@ class DataStoreManager(val context: Context) {
                 preferences[SELECTED_LESSONS_KEY]?.mapNotNull { it.toIntOrNull() }?.toSet() ?: emptySet()
             }
     }
+
+    suspend fun clearSelectedLessons() {
+        context.dataStore.edit { preferences ->
+            preferences.remove(SELECTED_LESSONS_KEY)
+        }
+    }
 }

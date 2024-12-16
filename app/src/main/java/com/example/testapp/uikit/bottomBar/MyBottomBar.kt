@@ -36,12 +36,12 @@ fun MyBottomBar(
             isSelected = selectedTab == 0,
             onClick = { onTabSelected(0) }
         )
-        MyBottomBarItem(
-            icon = R.drawable.profile,
-            label = "Profile",
-            isSelected = selectedTab == 1,
-            onClick = { onTabSelected(1) }
-        )
+//        MyBottomBarItem(
+//            icon = R.drawable.profile,
+//            label = "Profile",
+//            isSelected = selectedTab == 1,
+//            onClick = { onTabSelected(1) }
+//        )
         MyBottomBarItem(
             icon = R.drawable.fire,
             label = "Training",
