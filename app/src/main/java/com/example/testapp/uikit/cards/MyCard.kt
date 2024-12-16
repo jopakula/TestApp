@@ -23,16 +23,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.testapp.R
+import com.example.testapp.data.LessonCard
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GrayColor
 import com.example.testapp.uikit.common.WhiteColor
 
 @Composable
 fun MyCard(
+    card: LessonCard,
     onClick: () -> Unit = {},
 ) {
     val interactionSource = remember { MutableInteractionSource() }
@@ -51,7 +51,7 @@ fun MyCard(
         Image(
             modifier = Modifier
                 .fillMaxWidth(),
-            painter = painterResource(R.drawable.card_bg1),
+            painter = painterResource(card.imageRes),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
@@ -68,7 +68,7 @@ fun MyCard(
             Text(
                 modifier = Modifier
                     .padding(start = 16.dp, top = 32.dp, end = 16.dp, bottom = 8.dp),
-                text = "NAME LESSON",
+                text = card.title,
                 color = WhiteColor,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 18.sp,
@@ -81,7 +81,7 @@ fun MyCard(
                 Text(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 8.dp),
-                    text = "Lorem ipsum dolor sit amet consectetur. Mi scelerisque nec mauris elementum egestas convallis. Odio lectus consectetur ultrices libero dolor adipiscing semper nec justo. Integer nunc et arcu cum luctus neque consequat consequat.",
+                    text = card.description,
                     color = GrayColor,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 12.sp,
@@ -92,8 +92,16 @@ fun MyCard(
     }
 }
 
-@Composable
-@Preview
-private fun MyCardPreview() {
-    MyCard()
-}
+//@Composable
+//@Preview
+//private fun MyCardPreview() {
+//    val card =LessonCard(
+//        id = 1,
+//        title = "title",
+//        description = "description",
+//        imageRes = painterResource(R.drawable.card_bg1)
+//    )
+//    MyCard(
+//        card =
+//    )
+//}

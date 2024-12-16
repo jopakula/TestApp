@@ -4,12 +4,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -25,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.testapp.R
+import com.example.testapp.data.lessonCards
 import com.example.testapp.navigation.Screens
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
 import com.example.testapp.uikit.cards.MyCard
@@ -59,6 +62,7 @@ fun MainScreen(
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
+            contentPadding = PaddingValues(bottom = 8.dp)
         ) {
             item {
                 Row(
@@ -119,11 +123,14 @@ fun MainScreen(
                     )
                 }
             }
-            items(5) { card ->
+
+            items(lessonCards) { card ->
                 MyCard(
-                    onClick = { navigationController.navigate(Screens.Detail.createRoute(cardId = card)) }
+                    card = card,
+                    onClick = { navigationController.navigate(Screens.Detail.createRoute(cardId = card.id)) }
                 )
             }
+
         }
     }
 }

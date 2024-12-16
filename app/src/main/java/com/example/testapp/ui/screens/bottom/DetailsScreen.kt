@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.testapp.R
+import com.example.testapp.data.lessonCards
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
 import com.example.testapp.uikit.button.MyButton
 import com.example.testapp.uikit.common.BlackColor
@@ -38,9 +39,9 @@ fun DetailsScreen(
     cardId: Int? = null,
     onIconBackClick: () -> Unit = {},
 ) {
+    val card = lessonCards.find { it.id == cardId }
+
     val interactionSource = remember { MutableInteractionSource() }
-    val cardText =
-        "Lorem ipsum dolor sit amet consectetur. Turpis purus eu fermentum imperdiet massa semper. Cras eu rutrum amet mauris ac maecenas orci ut sem. Ut odio facilisis id feugiat. Diam et purus nulla interdum tortor laoreet ac neque neque. Pharetra mauris mattis in venenatis. Orci facilisi duis mi ultrices amet eget nulla."
     if (cardId == null) {
         Text("Invalid card ID")
         return
@@ -67,7 +68,7 @@ fun DetailsScreen(
                 Image(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    painter = painterResource(R.drawable.card_bg1),
+                    painter = painterResource(card?.imageRes ?: 1),
                     contentDescription = null,
                     contentScale = ContentScale.Crop
                 )
@@ -83,7 +84,7 @@ fun DetailsScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "DAY 1",
+                        text = card?.title?: "Title",
                         fontSize = 14.sp,
                         color = WhiteColor,
                         fontWeight = FontWeight.Normal
@@ -116,19 +117,7 @@ fun DetailsScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
-                    text = cardText,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = BlackColor.copy(alpha = 0.7F)
-                )
-                Text(
-                    text = cardText,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = BlackColor.copy(alpha = 0.7F)
-                )
-                Text(
-                    text = cardText,
+                    text = card?.description?: "Description",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = BlackColor.copy(alpha = 0.7F)
