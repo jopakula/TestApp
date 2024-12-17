@@ -10,6 +10,7 @@ import com.example.testapp.ui.screens.bottom.DetailsScreen
 import com.example.testapp.ui.screens.bottom.MainScreen
 import com.example.testapp.ui.screens.bottom.Screen2
 import com.example.testapp.ui.screens.bottom.SettingsScreen
+import com.example.testapp.ui.screens.bottom.TestScreen
 import com.example.testapp.ui.screens.bottom.TrainingScreen
 
 @Composable
@@ -31,6 +32,13 @@ fun BottomNavigation(
         composable(Screens.Detail.screen) { backStackEntry ->
             val cardId = backStackEntry.arguments?.getString("cardId")?.toIntOrNull()
             DetailsScreen(
+                cardId = cardId,
+                onIconBackClick = { navigationController.popBackStack() },
+                navigationController = navigationController)
+        }
+        composable(Screens.Test.screen) { backStackEntry ->
+            val cardId = backStackEntry.arguments?.getString("cardId")?.toIntOrNull()
+            TestScreen(
                 cardId = cardId,
                 onIconBackClick = { navigationController.popBackStack() })
         }

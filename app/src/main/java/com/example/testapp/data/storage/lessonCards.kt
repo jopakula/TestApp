@@ -1,6 +1,7 @@
-package com.example.testapp.data
+package com.example.testapp.data.storage
 
 import com.example.testapp.R
+import com.example.testapp.data.models.LessonCard
 
 
 val lessonCards = listOf(

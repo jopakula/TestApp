@@ -32,7 +32,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.testapp.R
 import com.example.testapp.data.DataStoreManager
-import com.example.testapp.data.lessonCards
+import com.example.testapp.data.storage.lessonCards
 import com.example.testapp.navigation.Screens
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
 import com.example.testapp.uikit.cards.MyCard

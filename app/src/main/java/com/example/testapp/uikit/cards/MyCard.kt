@@ -25,7 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.testapp.data.LessonCard
+import com.example.testapp.data.models.LessonCard
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GrayColor
 import com.example.testapp.uikit.common.WhiteColor

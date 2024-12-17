@@ -1,4 +1,4 @@
-package com.example.testapp.data
+package com.example.testapp.data.models
 
 data class LessonCard(
     val id: Int,

@@ -27,8 +27,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.testapp.R
-import com.example.testapp.data.lessonCards
+import com.example.testapp.data.storage.lessonCards
+import com.example.testapp.navigation.Screens
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
 import com.example.testapp.uikit.button.MyButton
 import com.example.testapp.uikit.common.BlackColor
@@ -36,6 +39,7 @@ import com.example.testapp.uikit.common.WhiteColor
 
 @Composable
 fun DetailsScreen(
+    navigationController: NavHostController,
     cardId: Int? = null,
     onIconBackClick: () -> Unit = {},
 ) {
@@ -85,9 +89,9 @@ fun DetailsScreen(
                 ) {
                     Text(
                         text = card?.title?: "Title",
-                        fontSize = 14.sp,
+                        fontSize = 22.sp,
                         color = WhiteColor,
-                        fontWeight = FontWeight.Normal
+                        fontWeight = FontWeight.Bold
                     )
                     Row(
                         modifier = Modifier
@@ -127,7 +131,10 @@ fun DetailsScreen(
         MyButton(
             modifier = Modifier
                 .padding(vertical = 24.dp, horizontal = 16.dp),
-            buttonText = "Training"
+            buttonText = "Training",
+            onClick = {
+                navigationController.navigate(Screens.Test.createRoute(cardId = cardId))
+            }
         )
     }
 }
@@ -135,5 +142,8 @@ fun DetailsScreen(
 @Composable
 @Preview
 private fun DetailsScreenPreview() {
-    DetailsScreen(cardId = 1)
+    DetailsScreen(
+        cardId = 1,
+        navigationController = rememberNavController()
+    )
 }
