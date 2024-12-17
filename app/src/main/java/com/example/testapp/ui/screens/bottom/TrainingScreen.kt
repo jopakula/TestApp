@@ -18,7 +18,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.testapp.R
+import com.example.testapp.navigation.Screens
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
 import com.example.testapp.uikit.button.MyButton
 import com.example.testapp.uikit.common.BlackColor
@@ -26,7 +29,9 @@ import com.example.testapp.uikit.common.GreenColor
 import com.example.testapp.uikit.common.WhiteColor
 
 @Composable
-fun TrainingScreen() {
+fun TrainingScreen(
+    navigationController: NavHostController,
+) {
     ChangeStatusBarColor(color = WhiteColor, isIconsLight = false)
     Column(
         modifier = Modifier
@@ -73,7 +78,10 @@ fun TrainingScreen() {
                 textAlign = TextAlign.Center
             )
             MyButton(
-                buttonText = "Start"
+                buttonText = "Start",
+                onClick = {
+                    navigationController.navigate(Screens.TrainingTest.screen)
+                }
             )
         }
 
@@ -84,5 +92,5 @@ fun TrainingScreen() {
 @Composable
 @Preview
 private fun TrainingScreenPreview() {
-    TrainingScreen()
+    TrainingScreen(navigationController = rememberNavController())
 }

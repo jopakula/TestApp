@@ -41,6 +41,9 @@ android {
 
 dependencies {
 
+    // viewmodel
+    implementation(libs.androidx.viewmodel.compose)
+
     // dara store
     implementation (libs.androidx.datastore.preferences)
 
