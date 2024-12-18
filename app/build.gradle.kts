@@ -9,8 +9,8 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.testapp"
-        minSdk = 31
+        applicationId = "com.suwi.chaerdive.ko"
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
