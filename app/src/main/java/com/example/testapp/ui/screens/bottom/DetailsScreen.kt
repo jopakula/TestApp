@@ -1,6 +1,5 @@
 package com.example.testapp.ui.screens.bottom
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -30,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import com.example.testapp.R
 import com.example.testapp.data.storage.lessonCards
 import com.example.testapp.navigation.Screens
@@ -38,6 +39,7 @@ import com.example.testapp.uikit.button.MyButton
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.WhiteColor
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun DetailsScreen(
     navigationController: NavHostController,
@@ -70,10 +72,10 @@ fun DetailsScreen(
                     .height(130.dp),
                 contentAlignment = Alignment.Center
             ) {
-                Image(
+                GlideImage(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    painter = painterResource(card?.imageRes ?: 1),
+                    model = card?.imageRes ?: 1,
                     contentDescription = null,
                     contentScale = ContentScale.Crop
                 )

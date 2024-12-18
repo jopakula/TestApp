@@ -43,7 +43,7 @@ fun Onboarding2Screen(
             modifier = Modifier
                 .fillMaxWidth(),
             contentScale = ContentScale.FillWidth,
-            painter = painterResource(R.drawable.onboarding2),
+            painter = painterResource(R.drawable.onboarding2_small),
             contentDescription = null,
         )
         Column(

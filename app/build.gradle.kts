@@ -41,6 +41,9 @@ android {
 
 dependencies {
 
+    // glide
+    implementation (libs.compose.glide)
+
     // viewmodel
     implementation(libs.androidx.viewmodel.compose)
 

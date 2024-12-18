@@ -20,6 +20,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import com.example.testapp.R
 import com.example.testapp.navigation.Screens
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
@@ -28,6 +30,7 @@ import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GreenColor
 import com.example.testapp.uikit.common.WhiteColor
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun TrainingScreen(
     navigationController: NavHostController,
@@ -64,10 +67,10 @@ fun TrainingScreen(
                 fontWeight = FontWeight.SemiBold,
                 textAlign = TextAlign.Center
             )
-            Image(
+            GlideImage(
                 modifier = Modifier
                     .size(94.dp),
-                painter = painterResource(R.drawable.present_box),
+                model = R.drawable.present_box,
                 contentDescription = null
             )
             Text(

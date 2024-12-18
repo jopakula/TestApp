@@ -1,6 +1,5 @@
 package com.example.testapp.uikit.cards
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -20,16 +19,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
+import com.example.testapp.R
 import com.example.testapp.data.models.LessonCard
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GrayColor
 import com.example.testapp.uikit.common.WhiteColor
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun MyCard(
     card: LessonCard,
@@ -48,10 +51,10 @@ fun MyCard(
             ),
         contentAlignment = Alignment.Center
     ) {
-        Image(
+        GlideImage(
             modifier = Modifier
                 .fillMaxWidth(),
-            painter = painterResource(card.imageRes),
+            model = card.imageRes,
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
@@ -92,16 +95,16 @@ fun MyCard(
     }
 }
 
-//@Composable
-//@Preview
-//private fun MyCardPreview() {
-//    val card =LessonCard(
-//        id = 1,
-//        title = "title",
-//        description = "description",
-//        imageRes = painterResource(R.drawable.card_bg1)
-//    )
-//    MyCard(
-//        card =
-//    )
-//}
+@Composable
+@Preview
+private fun MyCardPreview() {
+    val card =LessonCard(
+        id = 1,
+        title = "title",
+        description = "description",
+        imageRes = R.drawable.card_bg1_small
+    )
+    MyCard(
+        card = card
+    )
+}

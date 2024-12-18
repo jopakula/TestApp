@@ -1,6 +1,5 @@
 package com.example.testapp.ui.screens.bottom
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,7 +10,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,6 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import com.example.testapp.R
 import com.example.testapp.navigation.Screens
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
@@ -35,6 +35,7 @@ enum class MyResult {
 }
 
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun TrainingResultsScreen(
     navigationController: NavHostController,
@@ -97,12 +98,9 @@ fun TrainingResultsScreen(
                     color = BlackColor,
                     textAlign = TextAlign.Center,
                     )
-                Image(
-//                    modifier = Modifier
-//                        .size(180.dp),
-                    painter = painterResource(resultImage),
+                GlideImage(
+                    model = resultImage,
                     contentDescription = null,
-//                    contentScale = ContentScale.Fit
                 )
                 Text(
                     text = resultHint,
