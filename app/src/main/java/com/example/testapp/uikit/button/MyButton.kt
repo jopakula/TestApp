@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ripple.rememberRipple
+
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -88,7 +89,7 @@ fun MyButton(
             .clip(RoundedCornerShape(roundingSize))
             .clickable(
                 interactionSource = interactionSource,
-                indication = rememberRipple(),
+                indication =rememberRipple(),
                 enabled = enabled,
                 onClick = onClick,
             )

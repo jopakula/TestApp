@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.example.testapp.R
 import com.example.testapp.data.DataStoreManager
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
+import com.example.testapp.ui.helpfulFunctions.openAppRating
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GreenColor
 import com.example.testapp.uikit.common.RedColor
@@ -39,6 +40,7 @@ fun SettingsScreen(
     dataStoreManager: DataStoreManager,
 ) {
     var showDialog by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
     ChangeStatusBarColor(color = WhiteColor, isIconsLight = false)
     Column(
@@ -83,6 +85,9 @@ fun SettingsScreen(
                     iconRes = R.drawable.rate_app,
                     iconTint = GreenColor,
                     text = "Rate app",
+                    onClick = {
+                        openAppRating(context)
+                    }
                 )
             }
 

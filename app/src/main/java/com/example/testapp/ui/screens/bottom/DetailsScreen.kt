@@ -89,7 +89,7 @@ fun DetailsScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = card?.title?: "Title",
+                        text = card?.title ?: "Title",
                         fontSize = 22.sp,
                         color = WhiteColor,
                         fontWeight = FontWeight.Bold,
@@ -104,11 +104,11 @@ fun DetailsScreen(
                                 .padding(start = 8.dp, top = 26.dp)
                                 .rotate(180f)
                                 .size(18.dp)
-                                .clickable (
+                                .clickable(
                                     onClick = onIconBackClick,
                                     interactionSource = interactionSource,
                                     indication = rememberRipple(),
-                                    ),
+                                ),
                             painter = painterResource(R.drawable.arrow),
                             contentDescription = null,
                             tint = WhiteColor
@@ -123,7 +123,7 @@ fun DetailsScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
-                    text = card?.description?: "Description",
+                    text = card?.description ?: "Description",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = BlackColor.copy(alpha = 0.7F)
