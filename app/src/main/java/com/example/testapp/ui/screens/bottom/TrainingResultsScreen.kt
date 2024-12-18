@@ -125,7 +125,12 @@ fun TrainingResultsScreen(
                         textAlign = TextAlign.Center,
                         )
                     MyButton(
-                        buttonText = "Finish"
+                        buttonText = "Finish",
+                        onClick = {
+                            navigationController.navigate(Screens.Training.screen){
+                                popUpTo(0) { inclusive = true }
+                            }
+                        },
                     )
                 } else {
                     MyButton(
@@ -143,7 +148,7 @@ fun TrainingResultsScreen(
                             navigationController.navigate(Screens.Training.screen){
                                 popUpTo(0) { inclusive = true }
                             }
-                        }
+                        },
                     )
                 }
             }

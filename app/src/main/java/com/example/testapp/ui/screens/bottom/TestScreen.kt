@@ -32,9 +32,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.testapp.R
 import com.example.testapp.data.storage.lessonCards
 import com.example.testapp.data.storage.questions
+import com.example.testapp.navigation.Screens
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
 import com.example.testapp.uikit.button.ButtonType
 import com.example.testapp.uikit.button.MyButton
@@ -43,9 +46,14 @@ import com.example.testapp.uikit.common.BlueColor
 import com.example.testapp.uikit.common.GreenColor
 import com.example.testapp.uikit.common.RedColor
 import com.example.testapp.uikit.common.WhiteColor
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun TestScreen(
+    navigationController: NavHostController,
     cardId: Int? = null,
     onIconBackClick: () -> Unit = {},
 ) {
@@ -157,6 +165,10 @@ fun TestScreen(
                                 selectedAnswerIndex = index
                                 isAnswerCorrect = index == question.correctAnswerIndex
                             }
+                            CoroutineScope(Dispatchers.Main).launch {
+                                delay(1500)
+                                navigationController.navigate(Screens.Main.screen)
+                            }
                         }
                     )
                 }
@@ -169,6 +181,7 @@ fun TestScreen(
 @Preview
 private fun TestScreenPreview() {
     TestScreen(
-        cardId = 1
+        cardId = 1,
+        navigationController = rememberNavController()
     )
 }

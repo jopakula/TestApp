@@ -43,7 +43,9 @@ fun BottomNavigation(
             val cardId = backStackEntry.arguments?.getString("cardId")?.toIntOrNull()
             TestScreen(
                 cardId = cardId,
-                onIconBackClick = { navigationController.popBackStack() })
+                onIconBackClick = { navigationController.popBackStack() },
+                navigationController = navigationController,
+            )
         }
 
         composable(Screens.Training.screen) { TrainingScreen(navigationController = navigationController) }
