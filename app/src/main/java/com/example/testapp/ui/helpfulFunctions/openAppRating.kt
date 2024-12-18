@@ -6,7 +6,8 @@ import android.content.Intent
 import android.net.Uri
 
 fun openAppRating(context: Context) {
-    val uri = Uri.parse("market://details?id=${context.packageName}")
+    val appPackageName = context.packageName
+    val uri = Uri.parse("market://details?id=$appPackageName")
     val intent = Intent(Intent.ACTION_VIEW, uri).apply {
         addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY or
                 Intent.FLAG_ACTIVITY_NEW_DOCUMENT or
@@ -15,7 +16,7 @@ fun openAppRating(context: Context) {
     try {
         context.startActivity(intent)
     } catch (e: ActivityNotFoundException) {
-        val webUri = Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}")
+        val webUri = Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
         context.startActivity(Intent(Intent.ACTION_VIEW, webUri))
     }
 }

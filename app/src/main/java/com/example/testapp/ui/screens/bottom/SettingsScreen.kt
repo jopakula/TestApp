@@ -26,6 +26,7 @@ import com.example.testapp.R
 import com.example.testapp.data.DataStoreManager
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
 import com.example.testapp.ui.helpfulFunctions.openAppRating
+import com.example.testapp.ui.helpfulFunctions.shareApp
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GreenColor
 import com.example.testapp.uikit.common.RedColor
@@ -80,6 +81,9 @@ fun SettingsScreen(
                     iconRes = R.drawable.share_our_app,
                     iconTint = GreenColor,
                     text = "Share our app",
+                    onClick = {
+                        shareApp(context)
+                    }
                 )
                 MySettingsRow(
                     iconRes = R.drawable.rate_app,
