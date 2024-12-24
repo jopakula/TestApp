@@ -26,7 +26,10 @@ import com.example.testapp.uikit.button.ButtonType
 import com.example.testapp.uikit.button.MyButton
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GrayColor
+import com.example.testapp.uikit.common.GreenColor
+import com.example.testapp.uikit.common.RedColor
 import com.example.testapp.uikit.common.WhiteColor
+import com.example.testapp.uikit.common.YellowColor
 
 enum class MyResult {
     BAD,
@@ -97,7 +100,7 @@ fun TrainingResultsScreen(
                     fontWeight = FontWeight.Bold,
                     color = BlackColor,
                     textAlign = TextAlign.Center,
-                    )
+                )
                 GlideImage(
                     model = resultImage,
                     contentDescription = null,
@@ -108,13 +111,23 @@ fun TrainingResultsScreen(
                     fontWeight = FontWeight.SemiBold,
                     color = GrayColor,
                     textAlign = TextAlign.Center,
-                    )
+                )
             }
+            Text(
+                text = "$correctAnswersCount / 6",
+                fontSize = 42.sp,
+                fontWeight = FontWeight.Bold,
+                color = when (result){
+                    MyResult.EXCELLENT -> GreenColor
+                    MyResult.GOOD -> YellowColor
+                    MyResult.BAD -> RedColor
+                }
+            )
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                if (result == MyResult.EXCELLENT){
+                if (result == MyResult.EXCELLENT) {
                     Text(
                         modifier = Modifier
                             .padding(bottom = 10.dp),
@@ -123,11 +136,11 @@ fun TrainingResultsScreen(
                         fontWeight = FontWeight.SemiBold,
                         color = GrayColor,
                         textAlign = TextAlign.Center,
-                        )
+                    )
                     MyButton(
                         buttonText = "Finish",
                         onClick = {
-                            navigationController.navigate(Screens.Training.screen){
+                            navigationController.navigate(Screens.Training.screen) {
                                 popUpTo(0) { inclusive = true }
                             }
                         },
@@ -136,7 +149,7 @@ fun TrainingResultsScreen(
                     MyButton(
                         buttonText = "Again",
                         onClick = {
-                            navigationController.navigate(Screens.TrainingTest.screen){
+                            navigationController.navigate(Screens.TrainingTest.screen) {
                                 popUpTo(0) { inclusive = true }
                             }
                         }
@@ -145,7 +158,7 @@ fun TrainingResultsScreen(
                         buttonText = "Finish",
                         type = ButtonType.Outline,
                         onClick = {
-                            navigationController.navigate(Screens.Training.screen){
+                            navigationController.navigate(Screens.Training.screen) {
                                 popUpTo(0) { inclusive = true }
                             }
                         },
@@ -159,6 +172,6 @@ fun TrainingResultsScreen(
 
 @Composable
 @Preview
-private fun TrainingResultsScreenPreview(){
+private fun TrainingResultsScreenPreview() {
     TrainingResultsScreen(navigationController = rememberNavController())
 }
