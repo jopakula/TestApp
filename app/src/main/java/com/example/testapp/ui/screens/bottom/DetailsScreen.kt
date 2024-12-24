@@ -137,7 +137,7 @@ fun DetailsScreen(
                 .padding(vertical = 24.dp, horizontal = 16.dp),
             buttonText = "Training",
             onClick = {
-                navigationController.navigate(Screens.Test.createRoute(cardId = cardId))
+                navigationController.navigate(Screens.Test.createRoute(cardId = cardId)){}
             }
         )
     }

@@ -10,6 +10,7 @@ import com.example.testapp.ui.screens.bottom.DetailsScreen
 import com.example.testapp.ui.screens.bottom.MainScreen
 import com.example.testapp.ui.screens.bottom.Screen2
 import com.example.testapp.ui.screens.bottom.SettingsScreen
+import com.example.testapp.ui.screens.bottom.TestResultScreen
 import com.example.testapp.ui.screens.bottom.TestScreen
 import com.example.testapp.ui.screens.bottom.TrainingResultsScreen
 import com.example.testapp.ui.screens.bottom.TrainingScreen
@@ -47,6 +48,16 @@ fun BottomNavigation(
                 navigationController = navigationController,
             )
         }
+        composable(Screens.TestResult.screen) { backStackEntry ->
+            val cardId = backStackEntry.arguments?.getString("cardId")?.toIntOrNull() ?: 0
+            val correctAnswersCount = backStackEntry.arguments?.getString("correctAnswersCount")?.toIntOrNull() ?: 0
+            TestResultScreen(
+                navigationController = navigationController,
+                correctAnswersCount = correctAnswersCount,
+                cardId = cardId
+            )
+        }
+
 
         composable(Screens.Training.screen) { TrainingScreen(navigationController = navigationController) }
         composable(Screens.TrainingTest.screen) { TrainingTestScreen(navigationController = navigationController) }
@@ -57,10 +68,7 @@ fun BottomNavigation(
                 correctAnswersCount = correctAnswersCount,
             )
         }
-
         composable(Screens.Settings.screen) { SettingsScreen(dataStoreManager =  dataStoreManager) }
-
-
         composable(Screens.Screen2.screen) { Screen2() }
     }
 

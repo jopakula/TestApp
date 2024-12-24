@@ -167,7 +167,8 @@ fun TestScreen(
                             }
                             CoroutineScope(Dispatchers.Main).launch {
                                 delay(1500)
-                                navigationController.navigate(Screens.Main.screen)
+                                val result = if (isAnswerCorrect == true) 1 else 0
+                                navigationController.navigate(Screens.TestResult.createRoute(correctAnswersCount = result, cardId = cardId?: 0))
                             }
                         }
                     )
