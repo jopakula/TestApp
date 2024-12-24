@@ -26,6 +26,7 @@ import com.example.testapp.R
 import com.example.testapp.data.DataStoreManager
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
 import com.example.testapp.ui.helpfulFunctions.openAppRating
+import com.example.testapp.ui.helpfulFunctions.openUrl
 import com.example.testapp.ui.helpfulFunctions.shareApp
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GreenColor
@@ -76,6 +77,11 @@ fun SettingsScreen(
                     iconRes = R.drawable.usage_policy,
                     iconTint = GreenColor,
                     text = "Usage Policy",
+                    onClick = {
+                        val privacyPolicyUrl =
+                            "https://doc-hosting.flycricket.io/divepo-changequiz-privacy-policy/6fefacd5-c4d1-49f1-afab-ca0e0281e456/privacy"
+                        openUrl(context, privacyPolicyUrl)
+                    }
                 )
                 MySettingsRow(
                     iconRes = R.drawable.share_our_app,
