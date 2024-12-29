@@ -26,7 +26,7 @@ import com.example.testapp.uikit.button.ButtonType
 import com.example.testapp.uikit.button.MyButton
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GrayColor
-import com.example.testapp.uikit.common.GreenColor
+import com.example.testapp.uikit.common.BlueColor2
 import com.example.testapp.uikit.common.RedColor
 import com.example.testapp.uikit.common.WhiteColor
 
@@ -103,7 +103,7 @@ fun TestResultScreen(
                 text = "$correctAnswersCount / 1",
                 fontSize = 42.sp,
                 fontWeight = FontWeight.Bold,
-                color = if (correctAnswersCount > 0) GreenColor else RedColor
+                color = if (correctAnswersCount > 0) BlueColor2 else RedColor
             )
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,

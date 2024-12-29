@@ -28,7 +28,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.testapp.R
 import com.example.testapp.navigation.Screens
-import com.example.testapp.uikit.common.GreenColor
+import com.example.testapp.uikit.common.BlueColor2
 import com.example.testapp.uikit.common.WhiteColor
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -63,7 +63,7 @@ fun SplashScreen(
             modifier = Modifier
                 .padding(50.dp)
                 .size(180.dp),
-            painter = painterResource(R.drawable.logo),
+            painter = painterResource(R.drawable.icon),
             contentDescription = null,
         )
         LinearProgressIndicator(
@@ -72,7 +72,7 @@ fun SplashScreen(
                 .height(6.dp)
                 .clip(shape = RoundedCornerShape(4.dp)),
             progress = progress,
-            color = GreenColor
+            color = BlueColor2
         )
     }
 }

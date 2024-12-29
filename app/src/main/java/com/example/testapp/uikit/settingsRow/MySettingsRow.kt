@@ -24,12 +24,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.testapp.R
-import com.example.testapp.uikit.common.GreenColor
+import com.example.testapp.uikit.common.BlueColor2
 
 @Composable
 fun MySettingsRow(
     iconRes: Int = R.drawable.shopping_card,
-    iconTint: Color = GreenColor,
+    iconTint: Color = BlueColor2,
     text: String = "Text",
     onClick: () -> Unit = {},
 ) {

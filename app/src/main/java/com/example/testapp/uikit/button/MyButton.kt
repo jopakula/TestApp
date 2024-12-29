@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.testapp.uikit.common.BlackColor
-import com.example.testapp.uikit.common.GreenColor
+import com.example.testapp.uikit.common.BlueColor2
 import com.example.testapp.uikit.common.WhiteColor
 
 enum class ButtonType {
@@ -40,14 +40,14 @@ enum class ButtonType {
 fun MyButton(
     modifier: Modifier = Modifier,
     buttonHeight: Dp = 52.dp,
-    buttonBGColor: Color = GreenColor,
+    buttonBGColor: Color = BlueColor2,
     buttonText: String = "Button",
     type: ButtonType = ButtonType.Default,
     roundingSize: Dp = 16.dp,
     textSize: TextUnit = 18.sp,
     textWeight: FontWeight = FontWeight.SemiBold,
     borderWidth: Dp? = 1.dp,
-    borderColor: Color = GreenColor,
+    borderColor: Color = BlueColor2,
     shadowElevation: Dp? = null,
     enabled: Boolean = true,
     onClick: () -> Unit = {},

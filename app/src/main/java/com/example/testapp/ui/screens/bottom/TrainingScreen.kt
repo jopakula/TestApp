@@ -1,6 +1,5 @@
 package com.example.testapp.ui.screens.bottom
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,7 +11,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,7 +25,7 @@ import com.example.testapp.navigation.Screens
 import com.example.testapp.ui.helpfulFunctions.ChangeStatusBarColor
 import com.example.testapp.uikit.button.MyButton
 import com.example.testapp.uikit.common.BlackColor
-import com.example.testapp.uikit.common.GreenColor
+import com.example.testapp.uikit.common.BlueColor2
 import com.example.testapp.uikit.common.WhiteColor
 
 @OptIn(ExperimentalGlideComposeApi::class)
@@ -62,7 +60,7 @@ fun TrainingScreen(
                 modifier = Modifier
                     .padding(top = 50.dp),
                 text = "Here you can train in addition to lessons",
-                color = GreenColor,
+                color = BlueColor2,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold,
                 textAlign = TextAlign.Center

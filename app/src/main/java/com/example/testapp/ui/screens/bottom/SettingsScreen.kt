@@ -29,7 +29,7 @@ import com.example.testapp.ui.helpfulFunctions.openAppRating
 import com.example.testapp.ui.helpfulFunctions.openUrl
 import com.example.testapp.ui.helpfulFunctions.shareApp
 import com.example.testapp.uikit.common.BlackColor
-import com.example.testapp.uikit.common.GreenColor
+import com.example.testapp.uikit.common.BlueColor2
 import com.example.testapp.uikit.common.RedColor
 import com.example.testapp.uikit.common.WhiteColor
 import com.example.testapp.uikit.settingsRow.MySettingsRow
@@ -75,7 +75,7 @@ fun SettingsScreen(
             ) {
                 MySettingsRow(
                     iconRes = R.drawable.usage_policy,
-                    iconTint = GreenColor,
+                    iconTint = BlueColor2,
                     text = "Usage Policy",
                     onClick = {
                         val privacyPolicyUrl =
@@ -85,7 +85,7 @@ fun SettingsScreen(
                 )
                 MySettingsRow(
                     iconRes = R.drawable.share_our_app,
-                    iconTint = GreenColor,
+                    iconTint = BlueColor2,
                     text = "Share our app",
                     onClick = {
                         shareApp(context)
@@ -93,7 +93,7 @@ fun SettingsScreen(
                 )
                 MySettingsRow(
                     iconRes = R.drawable.rate_app,
-                    iconTint = GreenColor,
+                    iconTint = BlueColor2,
                     text = "Rate app",
                     onClick = {
                         openAppRating(context)

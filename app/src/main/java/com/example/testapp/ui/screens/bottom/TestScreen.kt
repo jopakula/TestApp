@@ -43,7 +43,7 @@ import com.example.testapp.uikit.button.ButtonType
 import com.example.testapp.uikit.button.MyButton
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.BlueColor
-import com.example.testapp.uikit.common.GreenColor
+import com.example.testapp.uikit.common.BlueColor2
 import com.example.testapp.uikit.common.RedColor
 import com.example.testapp.uikit.common.WhiteColor
 import kotlinx.coroutines.CoroutineScope
@@ -128,7 +128,7 @@ fun TestScreen(
                     .fillMaxWidth()
                     .padding(16.dp)
                     .clip(shape = RoundedCornerShape(16.dp))
-                    .background(color = GreenColor),
+                    .background(color = BlueColor2),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
@@ -151,7 +151,7 @@ fun TestScreen(
                         buttonText = option,
                         buttonBGColor = when {
                             selectedAnswerIndex == null -> WhiteColor
-                            index == question.correctAnswerIndex -> GreenColor
+                            index == question.correctAnswerIndex -> BlueColor2
                             index == selectedAnswerIndex -> RedColor
                             else -> WhiteColor
                         },

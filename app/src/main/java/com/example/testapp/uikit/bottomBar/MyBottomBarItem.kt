@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.testapp.uikit.common.GreenColor
+import com.example.testapp.uikit.common.BlueColor2
 import com.example.testapp.uikit.common.UnSelectedIconColor
 
 @Composable
@@ -45,12 +45,12 @@ fun MyBottomBarItem(
             painter = painterResource(id = icon),
             contentDescription = null,
             modifier = Modifier.size(iconSize),
-            tint = if (isSelected) GreenColor else UnSelectedIconColor
+            tint = if (isSelected) BlueColor2 else UnSelectedIconColor
         )
         Text(
             text = label,
             fontSize = labelSize,
-            color = if (isSelected) GreenColor else UnSelectedIconColor
+            color = if (isSelected) BlueColor2 else UnSelectedIconColor
         )
     }
 }

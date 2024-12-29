@@ -26,7 +26,7 @@ import com.example.testapp.uikit.button.ButtonType
 import com.example.testapp.uikit.button.MyButton
 import com.example.testapp.uikit.common.BlackColor
 import com.example.testapp.uikit.common.GrayColor
-import com.example.testapp.uikit.common.GreenColor
+import com.example.testapp.uikit.common.BlueColor2
 import com.example.testapp.uikit.common.RedColor
 import com.example.testapp.uikit.common.WhiteColor
 import com.example.testapp.uikit.common.YellowColor
@@ -118,7 +118,7 @@ fun TrainingResultsScreen(
                 fontSize = 42.sp,
                 fontWeight = FontWeight.Bold,
                 color = when (result){
-                    MyResult.EXCELLENT -> GreenColor
+                    MyResult.EXCELLENT -> BlueColor2
                     MyResult.GOOD -> YellowColor
                     MyResult.BAD -> RedColor
                 }
