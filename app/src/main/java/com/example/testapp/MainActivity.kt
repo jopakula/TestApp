@@ -16,6 +16,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navigationController = rememberNavController()
             val dataStoreManager by lazy { DataStoreManager(applicationContext) }
+
             StartNavigation(
                 navigationController = navigationController,
                 startDestination = Screens.Splash.screen,
